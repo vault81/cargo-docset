@@ -211,9 +211,13 @@ fn generate_sqlite_index<P: AsRef<Path>>(docset_dir: P, entries: Vec<DocsetEntry
     conn_path.push("docSet.dsidx");
     let mut conn = Connection::open(&conn_path).context(SqliteSnafu)?;
     conn.execute(
-        "CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);
-        CREATE UNIQUE INDEX anchor ON searchIndex (name, type, path);
-        )",
+        "CREATE TABLE searchIndex(id INTEGER PRIMARY KEY, name TEXT, type TEXT, path TEXT);",
+        params![]
+    )
+    .context(SqliteSnafu)?;
+
+    conn.execute(
+        "CREATE UNIQUE INDEX anchor ON searchIndex(name, type, path);",
         params![]
     )
     .context(SqliteSnafu)?;
