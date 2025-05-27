@@ -1,9 +1,9 @@
 [package]
 name = "cargo-docset"
-authors = ["R.Chavignat <r.chavignat@gmail.com>"]
+authors = ["T. Druyen <ek36g2vcc@mozmail.com>", "R.Chavignat <r.chavignat@gmail.com>"]
 description = "Generates a Zeal/Dash docset for your rust package."
 edition = "2021"
-version = "0.3.1"
+version = "0.3.2"
 
 repository = "https://github.com/Robzz/cargo-docset"
 readme = "README.md"
@@ -21,10 +21,10 @@ default = ["color"]
 
 [dependencies]
 atty = { version = "0.2", optional = true }
-cargo_metadata = "0.15"
-clap-cargo = { version = "0.10", features = ["cargo_metadata"] }
+cargo_metadata = "0.19"
+clap-cargo = { version = "0.15", features = ["cargo_metadata"] }
 clap = { version = "4.0", features = ["std", "suggestions", "derive"], default_features = false }
 derive_more = "0.99"
-rusqlite = "0.28"
+rusqlite = "0.36"
 snafu = "0.7"
 termcolor = { version = "1.1", optional = true }
